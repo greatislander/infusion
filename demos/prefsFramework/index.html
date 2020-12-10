@@ -806,10 +806,10 @@
 
                         <section>
                             <p class="topicheading">
-                                Educational Connection
+                                <button type="button" aria-expanded="false">Educational Connection <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="1" y1="5.85718" x2="11" y2="5.85718" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line><line class="vertical" x1="6.14282" y1="1" x2="6.14282" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line></svg></button>
                             </p>
 
-                            <p>
+                            <p id="educational-connection-target" hidden>
                                 This Climate Change Impacts Collection provides the teacher and
                                 their students the opportunity to explore some of the environmental
                                 changes already observed, from the Arctic to tropical regions. Data
@@ -820,6 +820,36 @@
                                 background resources provided in this collection tend to be for the
                                 teacher and/or the advanced student.
                             </p>
+
+                            <script>
+                                document.addEventListener("click", function(event) {
+                                    if (!event.target.getAttribute("aria-expanded")) {
+                                        return false;
+                                    }
+                                    var expanded = event.target.getAttribute("aria-expanded") === "true" || false;
+                                    var next = event.target.parentNode.nextElementSibling;
+
+                                    if (expanded) {
+                                        next.setAttribute("hidden", "");
+                                    } else {
+                                        next.removeAttribute("hidden")
+                                    }
+
+                                    event.target.setAttribute("aria-expanded", !expanded);
+                                });
+
+                            </script>
+
+                            <style>
+                                [aria-expanded] {
+                                    all: unset;
+                                    outline: initial;
+                                }
+
+                                [aria-expanded]:hover {
+                                    color: black;
+                                }
+                            </style>
                         </section>
                         <p class="caption">
                             Adapted from materials provided by <a href="#">Global Climate Change Impacts in the United States</a>
